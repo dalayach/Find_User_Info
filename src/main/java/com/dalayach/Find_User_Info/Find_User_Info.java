@@ -10,6 +10,8 @@ import com.dalayach.File_Handler.File_Handler;
 /**  Searches for a username on Google+ API and ascertains the user is who the API returned. If so, then, takes the 
  *   data and stores it into variables for use in other classes
  */
+ 
+ //TODO - put the remaining boolean variables to work
 
 
 class Find_User_Info
@@ -19,15 +21,15 @@ class Find_User_Info
 
    private Scanner scan;
    private final String APIKey;
-   private final String enterYourUserName     = "Enter your Google+ username.";
-   final String incorrectResponse     = "Incorrect response";
-   private final String nothingEntered        = "You didn't enter anything in.";
-   private final String nameDoesntMatchUp     = "There are no names that match up with your entry.\n\n";
-   private final String keysHaveChanged       = "The database this program is pulling from has been updated and " 
-                                             + "as a result, this program is outdated. Please email " 
-                                             + "dreadheadeddeveloper@gmail.com as this is a bug.";
-   private static final String issueWithURL   = "The URL may have been improperly entered or outdated. Email " 
-                                             + "dreadheadeddeveloper@gmail.com as this is a bug";
+   private final String enterYourUserName       = "Enter your Google+ username.";
+   private final String incorrectResponse               = "Incorrect response";
+   private final String nothingEntered          = "You didn't enter anything in.";
+   private final String nameDoesntMatchUp       = "There are no names that match up with your entry.\n\n";
+   private final String keysHaveChanged         = "The database this program is pulling from has been updated and " 
+                                                   + "as a result, this program is outdated. Please email " 
+                                                   + "dreadheadeddeveloper@gmail.com as this is a bug.";
+   private static final String issueWithURL     = "The URL may have been improperly entered or outdated. Email " 
+                                                   + "dreadheadeddeveloper@gmail.com as this is a bug";
    private String userName = "";
    private String userID; 
    private String choice;
@@ -40,7 +42,7 @@ class Find_User_Info
    //be updated upon use of an internet specific function, such as readURL(), moreover in the 
    //catch part of a try catch block when using readURL
    
-   private boolean readURLCorrectlyExecuted;
+   private boolean readURL_CorrectlyExecuted;
    private boolean enteredProperly = false;
    private boolean correctUser = false;
    private boolean programIsOutdated = false;
