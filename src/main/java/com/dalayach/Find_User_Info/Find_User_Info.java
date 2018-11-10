@@ -19,19 +19,20 @@ class Find_User_Info
 
    final int MAXRESULTS = 5;
 
-   private File_Handler key_Handler = new File_Handler();
+   private static File_Handler key_Handler = new File_Handler();
 
    private Scanner scan;
-   private final String APIKey;
+   private static final String APIKey = key_Handler.fetch_Secret("Google+");
+   private static final String email = key_Handler.fetch_Email();
    private final String enterYourUserName       = "Enter your Google+ username.";
    private final String incorrectResponse       = "Incorrect response";
    private final String nothingEntered          = "You didn't enter anything in.";
    private final String nameDoesntMatchUp       = "There are no names that match up with your entry.\n\n";
    private final String keysHaveChanged         = "The database this program is pulling from has been updated and " 
                                                    + "as a result, this program is outdated. Please email " 
-                                                   + "dreadheadeddeveloper@gmail.com as this is a bug.";
+                                                   + email + " as this is a bug.";
    private static final String issueWithURL     = "The URL may have been improperly entered or outdated. Email " 
-                                                   + "dreadheadeddeveloper@gmail.com as this is a bug";
+                                                   + email + " as this is a bug";
    private String userName = "";
    private String userID; 
    private String choice;
@@ -55,7 +56,8 @@ class Find_User_Info
    Find_User_Info()
    {
    
-      APIKey = key_Handler.fetch_Secret("Google+");
+      //APIKey = key_Handler.fetch_Secret("Google+");
+      //email = key_Handler.fetch_Email();
    
       while((!enteredProperly || !correctUser) && properConnection)
       {
