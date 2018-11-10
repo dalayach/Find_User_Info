@@ -17,12 +17,14 @@ import com.dalayach.File_Handler.File_Handler;
 class Find_User_Info
 {
 
+   final int MAXRESULTS = 5;
+
    private File_Handler key_Handler = new File_Handler();
 
    private Scanner scan;
    private final String APIKey;
    private final String enterYourUserName       = "Enter your Google+ username.";
-   private final String incorrectResponse               = "Incorrect response";
+   private final String incorrectResponse       = "Incorrect response";
    private final String nothingEntered          = "You didn't enter anything in.";
    private final String nameDoesntMatchUp       = "There are no names that match up with your entry.\n\n";
    private final String keysHaveChanged         = "The database this program is pulling from has been updated and " 
@@ -75,6 +77,8 @@ class Find_User_Info
          captureDataOnUser();//pull data on user and store into variables
       
       }
+      
+      System.out.println(toString());
             
    }
    
@@ -103,7 +107,7 @@ class Find_User_Info
          {
             
             plus_ppl_search = JSONObject.fromObject(readURL("https://www.googleapis.com/plus/v1/people?query=" 
-                  + userName + "&maxResults=5&key=" +  APIKey));//takes in data from Google+ API section plus.people.search and
+                  + userName + "&maxResults=" + MAXRESULTS + "&key=" +  APIKey));//takes in data from Google+ API section plus.people.search and
                                            //stores the data into JSONObject plus_ppl_search
                                  
             plus_ppl_search_items = (JSONArray)(plus_ppl_search.get("items"));//retrieves the array called data within 
@@ -207,6 +211,23 @@ class Find_User_Info
             
       }
       
+   }
+   
+   public String toString()
+   {
+   
+      String response = "Posting the top " + MAXRESULTS + " results below...";
+      for(int i = 0; i < MAXRESULTS; i++)
+      {
+      
+         response = response + "\n" + String.format("%7s", i + 1) + ". ";
+         response = response + plus_ppl_search_items.getJSONObject(i).getString("id");
+         response = response + " = " + plus_ppl_search_items.getJSONObject(i).getString("displayName");
+      
+      }
+      
+      return response;
+   
    }
    
    static String readURL(String webservice) throws UnknownHostException
